@@ -3,7 +3,7 @@ export default function Home() {
   return (
     <div className="space-y-16">
       <section id="about" className="text-center">
-        <h1 className="text-4xl font-bold">John Doe</h1>
+        <h1 className="text-4xl font-bold">Daria Tikho</h1>
         <p className="mt-2 text-xl text-gray-400">Frontend Developer & Designer</p>
       </section>
 

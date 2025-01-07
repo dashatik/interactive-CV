@@ -1,11 +1,36 @@
 
 import './globals.css';
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "My Interactive CV",
-  description: "A modern, interactive CV showcasing my skills and experience.",
+  title: "Daria Tikho - Interactive CV",
+  description: "An interactive resume showcasing Daria Tikho's skills, projects, and contact details.",
+  keywords: ["Daria Tikho", "Interactive Resume", "Frontend Developer", "Web Designer"],
+  openGraph: {
+    title: "Daria Tikho - Interactive CV",
+    description: "Explore Daria Tikho's skills and projects in an engaging, interactive resume format.",
+    url: "https://interactive-cv-omega.vercel.app/",
+    type: "website",
+    images: [
+      {
+        url: "/globe.svg",
+        width: 1200,
+        height: 630,
+        alt: "Daria Tikho's Interactive CV",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourtwitterhandle", // Replace with your Twitter handle
+    title: "Daria Tikho - Interactive CV",
+    description: "Explore Daria Tikho's skills and projects in an engaging, interactive resume format.",
+    images: ["/globe.svg"],
+  },
 };
+
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-black text-white">
         <Navbar />
         <main className="container mx-auto p-4">{children}</main>
+        <Footer />
       </body>
     </html>
   );
