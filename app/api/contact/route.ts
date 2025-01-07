@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import Database from "better-sqlite3";
 
+export const config = {
+  runtime: "nodejs",
+};
+
 const db = new Database("./database.db");
 
 export async function POST(req: Request) {
@@ -37,14 +41,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof Error) {
-      // Safely access error properties
       console.error("Error processing request:", error.message);
       return NextResponse.json(
         { success: false, error: error.message },
         { status: 500 }
       );
     } else {
-      // Handle unexpected error types
       console.error("Unexpected error:", error);
       return NextResponse.json(
         { success: false, error: "An unexpected error occurred" },
