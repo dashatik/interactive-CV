@@ -4,21 +4,52 @@ import Database from "better-sqlite3";
 const db = new Database("./database.db");
 
 export async function POST(req: Request) {
-  const { ip } = await req.json();
   try {
-    const stmt = db.prepare("INSERT INTO visitors (ip_address) VALUES (?)");
-    stmt.run(ip);
+    const contentType = req.headers.get("content-type") || "";
+
+    let data: { name: string; email: string; message: string };
+
+    if (contentType.includes("application/json")) {
+      // Parse JSON body
+      data = await req.json();
+    } else if (contentType.includes("application/x-www-form-urlencoded")) {
+      // Parse URL-encoded form data
+      const formData = await req.text();
+      const params = new URLSearchParams(formData);
+      data = {
+        name: params.get("name") || "",
+        email: params.get("email") || "",
+        message: params.get("message") || "",
+      };
+    } else {
+      return NextResponse.json(
+        { success: false, error: "Unsupported content type" },
+        { status: 400 }
+      );
+    }
+
+    // Insert data into the database
+    const stmt = db.prepare(
+      "INSERT INTO form_submissions (name, email, message) VALUES (?, ?, ?)"
+    );
+    stmt.run(data.name, data.email, data.message);
 
     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof Error) {
-      // If the error is an instance of the Error class
-      console.error("Database error:", error.message);
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+      // Safely access error properties
+      console.error("Error processing request:", error.message);
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
     } else {
       // Handle unexpected error types
       console.error("Unexpected error:", error);
-      return NextResponse.json({ success: false, error: "An unexpected error occurred." }, { status: 500 });
+      return NextResponse.json(
+        { success: false, error: "An unexpected error occurred" },
+        { status: 500 }
+      );
     }
   }
 }
