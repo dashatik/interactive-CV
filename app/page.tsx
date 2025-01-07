@@ -33,43 +33,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="py-16 bg-gray-800 text-center">
-        <h2 className="text-3xl font-bold mb-6">Contact</h2>
-        <p className="text-gray-400 mb-4">Feel free to reach out to me!</p>
-        <form
-          method="POST"
-          action="/api/contact"
-          className="space-y-4 bg-gray-900 p-6 rounded shadow-lg max-w-lg mx-auto"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            className="w-full p-2 bg-gray-700 text-white rounded"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            className="w-full p-2 bg-gray-700 text-white rounded"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={4}
-            className="w-full p-2 bg-gray-700 text-white rounded"
-            required
-          ></textarea>
-          <button
-            type="submit"
-            className="w-full px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded transition"
-          >
-            Send Message
-          </button>
-        </form>
-      </section>
+      <section id="contact" className="py-16 bg-gray-900 text-center">
+      <h2 className="text-3xl font-bold mb-6 text-white">Contact Me</h2>
+      <div className="space-y-4 bg-gray-800 p-6 rounded shadow-lg max-w-lg mx-auto">
+        <p className="text-white">
+          <strong>Email:</strong> <a href="mailto:your.email@example.com" className="text-teal-500 hover:underline">your.email@example.com</a>
+        </p>
+        <p className="text-white">
+          <strong>Phone:</strong> <a href="tel:+1234567890" className="text-teal-500 hover:underline">+123 456 7890</a>
+        </p>
+        <p className="text-white">
+          <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">linkedin.com/in/yourprofile</a>
+        </p>
+        <p className="text-white">
+          <strong>GitHub:</strong> <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">github.com/yourprofile</a>
+        </p>
+      </div>
+    </section>
     </div>
   );
 }
