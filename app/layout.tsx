@@ -23,7 +23,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@yourtwitterhandle", // Replace with your Twitter handle
+    site: "@DariaTikho",
     title: "Daria Tikho - Interactive CV",
     description: "Explore Daria Tikho's skills and projects in an engaging, interactive resume format.",
     images: ["/globe.svg"],

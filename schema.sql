@@ -1,0 +1,13 @@
+CREATE TABLE visitors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ip_address TEXT NOT NULL,
+    visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE form_submissions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    message TEXT,
+    submission_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
